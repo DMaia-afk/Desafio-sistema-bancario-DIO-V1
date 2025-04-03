@@ -1,4 +1,4 @@
-
+## Variáveis básicas
 menu = f'''
 
 [d] Depositar
@@ -16,7 +16,7 @@ total_de_saques = 0
 depositos = []
 saques = []
 
-
+## Função de depósito
 def depositando_valor():
     global saldo
     global depositos
@@ -25,6 +25,7 @@ def depositando_valor():
     print("Parabéns, seu depósito foi realizado com sucesso!")
     saldo += float(valor_depositado)
 
+## Função de saque
 def sacando_valor():
     global saques
     global total_de_saques
@@ -45,7 +46,7 @@ def sacando_valor():
         saques += [valor_sacado]
 
 
-
+## Laço do menu
 while True:
 
     escolha = input(menu)
@@ -53,24 +54,21 @@ while True:
     if escolha == "d":
         depositando_valor()
         
-
     elif escolha == "s":
         
         if total_de_saques >= LIMITE_DE_SAQUE:
             print("""###VOCÊ JÁ ATINGIU O LIMITE DE SAQUES POSSÍVEIS POR HOJE###""")
         else:
             sacando_valor()
-            
         
-
     elif escolha == "e":
         print(f"Seus depósitos: {depositos}")
         print(f"Seus saques: {saques}")
         print(f"Seu saldo: {saldo}")
         
-    
     elif escolha == "q":
         break
 
     else:
         print("Por favor, escolha uma das opções acima para que possamos prosseguir com o serviço. O Banco D.M agradece sua compreensão.")
+
