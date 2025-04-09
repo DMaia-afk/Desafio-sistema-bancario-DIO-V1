@@ -95,8 +95,11 @@ while True:
             print("\n---Por favor, nenhum valor identificado no saldo. Caso o erro se repita, contate nossa gerencia pelo suporte!---")
 
         else:
-            print("-_-_-_-_-_-_- EXTRATO -_-_-_-_-_-")
+            print("\n-_-_-_-_-_-_ EXTRATO -_-_-_-_-_-_\n|")
             print(extrato)
+            print("---------------------------------")
+            print(f"|    Seu saldo é: {saldo:.2f}")
+            print("================================")
         
 
     elif escolha == "q":
