@@ -34,33 +34,37 @@ def get_hours():
 ## Função de depósito
 def depositando_valor():
     global total_de_transacoes, saldo, extrato
-    
-    valor_depositado = input("""Insira o valor você deseja depositar: """)
-    extrato += f"|    Depósito: {float(valor_depositado):.2f}\n"
-    print("\n---Parabéns, seu depósito foi realizado com sucesso!---")
-    saldo += float(valor_depositado)
-    total_de_transacoes += 1
+    try:
+        valor_depositado = input("""Insira o valor você deseja depositar: """)
+        extrato += f"|    Depósito: R${float(valor_depositado):.2f}\n"
+        print("\n---Parabéns, seu depósito foi realizado com sucesso!---")
+        saldo += float(valor_depositado)
+        total_de_transacoes += 1
+    except ValueError:
+        print("\n---Valor não reconhecido! Por favor digite um valor válido.---\n")
+
 
 ## Função de saque
 def sacando_valor():
     global total_de_transacoes, extrato, total_de_saques, saldo, LIMITE_POR_SAQUE
 
     valor_sacado = input("""Insira o valor você deseja sacar: """)
+    try:
     
-    
-    if float(valor_sacado) > saldo:
-        print("""\n---SAQUE NÃO EFETUADO, VERIFIQUE SEU SALDO---""")
+        if float(valor_sacado) > saldo:
+            print("""\n---SAQUE NÃO EFETUADO, VERIFIQUE SEU SALDO---""")
 
-    elif float(valor_sacado) > LIMITE_POR_SAQUE:
-        print("""\n---VOCÊ ULTRAPASSOU O LIMITE DISPONÍVEL PARA O SAQUE ATUAL---""")
+        elif float(valor_sacado) > LIMITE_POR_SAQUE:
+            print("""\n---VOCÊ ULTRAPASSOU O LIMITE DISPONÍVEL PARA O SAQUE ATUAL---""")
 
-    else:
-        print("\n---Parabéns, seu saque foi realizado com sucesso!---")
-        total_de_saques += 1
-        saldo -= float(valor_sacado)
-        extrato += f"|    Saque: {float(valor_sacado):.2f}\n"
-        total_de_transacoes += 1
-
+        else:
+            print("\n---Parabéns, seu saque foi realizado com sucesso!---")
+            total_de_saques += 1
+            saldo -= float(valor_sacado)
+            extrato += f"|    Saque: R${float(valor_sacado):.2f}\n"
+            total_de_transacoes += 1
+    except ValueError:
+        print("\n---Valor não reconhecido! Por favor digite um valor válido.---\n")
 
 ## Laço do menu
 while True:
@@ -98,8 +102,8 @@ while True:
             print("\n-_-_-_-_-_-_ EXTRATO -_-_-_-_-_-_\n|")
             print(extrato)
             print("---------------------------------")
-            print(f"|    Seu saldo é: {saldo:.2f}")
-            print("================================")
+            print(f"|    Seu saldo é: R${saldo:.2f}")
+            print("=================================")
         
 
     elif escolha == "q":
