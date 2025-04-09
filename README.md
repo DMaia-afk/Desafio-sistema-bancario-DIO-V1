@@ -18,3 +18,9 @@ Não se preocupar com identificação de usuário, pois haverá somente 1.
 
 * Deve listar todas as operações.
 * Indicar quanto de saldo há restante
+
+## Inserção de data_hora
+
+* Estabelecer um limite de 10 transações diárias por dia;
+* Se o usuário tentar fazer uma transação após atingir o limite, deve ser notificado que ele excedeu o limite do dia;
+* Mostrar no extrato a data e a hora de todas as transações.

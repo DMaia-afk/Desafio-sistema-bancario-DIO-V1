@@ -8,31 +8,34 @@ menu = f'''
 
 ==>'''
 
+
+
 saldo = 0
 extrato = ""
 limite_por_saque = 500
 LIMITE_DE_SAQUE = 3
 total_de_saques = 0
-depositos = []
-saques = []
+total_de_transacoes = 0
+
+
 
 ## Função de depósito
 def depositando_valor():
     global saldo
-    global depositos
+    global extrato
     valor_depositado = input("""Insira o valor você deseja depositar: """)
-    depositos += [valor_depositado]
+    extrato += f"Depósito: {float(valor_depositado):.2f} \n"
     print("Parabéns, seu depósito foi realizado com sucesso!")
     saldo += float(valor_depositado)
 
 ## Função de saque
 def sacando_valor():
-    global saques
+    global extrato
     global total_de_saques
     global saldo
     global limite_por_saque
     valor_sacado = input("""Insira o valor você deseja sacar: """)
-    total_de_saques += 1
+    
     
     if float(valor_sacado) > saldo:
         print("""###SAQUE NÃO EFETUADO, VERIFIQUE SEU SALDO###""")
@@ -42,8 +45,9 @@ def sacando_valor():
 
     else:
         print("Parabéns, seu saque foi realizado com sucesso!")
+        total_de_saques += 1
         saldo -= float(valor_sacado)
-        saques += [valor_sacado]
+        extrato += f"Saque: {float(valor_sacado):.2f} \n"
 
 
 ## Laço do menu
@@ -62,9 +66,7 @@ while True:
             sacando_valor()
         
     elif escolha == "e":
-        print(f"Seus depósitos: {depositos}")
-        print(f"Seus saques: {saques}")
-        print(f"Seu saldo: {saldo}")
+        print(extrato)
         
     elif escolha == "q":
         break
